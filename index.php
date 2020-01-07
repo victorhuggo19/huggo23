@@ -1,34 +1,38 @@
+<html>
+<head>
 
-<! tentativa de realizar em Json
-<pre>
-<?php 
-//$c = array('Travis' => 29, 'John' => 30, 'Manny' => 24, 'Gabriel' => 20, 'Yogi' => 22);//parametros recebidos;
-//foreach($c as $c => $v){//pensei em separar os nomes para jogar no json e usar o ".sort()" para ordenar alfabeticamente;
-//	$d = $c;
-//	$script = "<script> var nomes = $d ;</script>";//coloquei na variavel $script para usar o echo dela e tentar fazer o json receber os dados declarados nela;
-//	echo $script;
-?>
-<script>  
-//alert(<?php $nomes ?>);//infelizmente o json nao recebe os dados str do meu array so os dados numericos, o meu "alert" percebe que sao 5 valores mas n reconhece nenhum deles;
-//	nomes.sort();
-	
-	
- </script>
+</head>
+<body>
+<form method='POST' >
+<table>
+<tr>
+<td><p>Nome sobrenome: <td><input type ="text" name ="nome">
+</tr>
+<tr>
+<td><p>Email: <td><input type="email" name="email"> <!Com o type = "email" o formulario so sera enviado caso o campo seja preenchido corretamente >
+</tr>
+<tr>
+<td><p>Twitter (Opicional):<td><input type="text" name="tw">
+</tr>
+<tr>
+<td><input type="submit" name="email">
+</tr>
+</form>
+</body>
+
+</html>
+
+
 <?php
-//}
-?>
-</pre>
-
-
-<! Não consegui realizar passando de PhP para Json, mas consegui realizar usando apenas php ->
-
-<?php
-
-$c = array('Travis' => 29, 'John' => 30, 'Manny' => 24, 'Gabriel' => 20, 'Yogi' => 22);//parametros recebidos;
-ksort($c);									  //usei a ferramenta "ksort()" para ordenar o array, usei o ksort() pois ela ordena alfabeticamente os nome e leva junto a idade associada; 
-foreach($c as $c => $v){					//usei o foreach para limpar o meu array (tirando cochetes, aspas, etc);
-echo "Nome: $c <br/>Idade: $v<br/><br/>"; //usei este "echo" para formatar a saida no formato especificado;
-}
-
+	$nome = $_POST['nome'];// Sendo "nome e sobrenome" dois paramentros...
+	$nome_anl = str_word_count($nome,0);// o "str_word_count" vai contar quantas palavras existem em $nome caso tenha apenas 1...
+	if($nome_anl <2 & $nome_anl != 0){
+	  echo '<script>alert("O campo nome deve ser preenchido com nome e sobrenome!");</script>';// Surgirá uma mensagem no topo da pagina informando.
+	}elseif($nome_anl == 0){
+		echo '<script>alert("O campo nome deve ser preenchido!");</script>';
+	}
+	else {
+		//INSERT INT...  Caso o nome e sobrenome estejam sertinhos será cadastrado no banco de dados.
+	}
 
 ?>
